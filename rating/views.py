@@ -4,4 +4,4 @@ def home(request):
     return render(request,'rating/home.html')
 
 def about(request):
-    return render(request,'rating/about.html')
+    return render(request,'rating/about.html',{'title':'about'})
