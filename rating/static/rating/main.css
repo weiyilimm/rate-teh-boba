@@ -115,19 +115,7 @@ a.article-title:hover {
   text-align: center;
   }
 
-  .banner-content a{
-    text-decoration: none;
-    color: #FFF;
-    padding: 9px 20px;
-    border: 1px solid;
-    text-transform: uppercase;
-    transition: all .3s ease-in-out;
-  }
 
-  .banner-content a:hover{
-    background-color: #FFF;
-    color: #333;
-  }
 
   @keyframes banner{
     0%{
@@ -159,3 +147,48 @@ footer a:hover { color:#ddd; text-decoration:none; }
 footer .footer-social-links .fa { font-size:19px; }
 footer .email-signup.form-inline .form-control { border-top-right-radius:0; border-bottom-right-radius:0; height:40px; width:calc(100% - 110px); }
 footer .email-signup .btn { border-top-left-radius:0; border-bottom-left-radius:0; height:40px; width:110px; }
+
+.search-box{
+  position:absolute;
+  top: 60%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+  background: #f5f6fa;
+  height: 50px;
+  border-radius: 10px;
+  padding: 10px;
+  width:50%;
+  margin-bottom: 0.5px;
+}
+
+.search-button{
+  background-color:#ff6b81;
+  float: right;
+  width: 100px;
+  border-radius: 5px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  color: white;
+  height: 35px;
+  letter-spacing: 1px;
+}
+
+.search-button:hover{
+  background-color: #f53b57;
+  color: white;
+  text-decoration:none;
+  }
+
+.search-txt{
+  border:none;
+  background: none;
+  outline: none;
+  float: left;
+  padding: 0;
+  color: black;
+  font-size: 16px;
+  transition: 0.4s;
+  line-height: 29px;
+  width: 300px;
+}
