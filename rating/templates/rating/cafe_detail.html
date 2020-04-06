@@ -1,0 +1,46 @@
+{% extends "rating/base.html" %}
+{% load staticfiles %}
+{% block content%}
+<div class="container my-5">
+    <h2 style="font-family: Comic Sans MS", cursive, sans-serif;">{{ object.title }}</h2>
+    <img src="{{ object.image.url }}" alt="Cafe" style="width:100%; height:500px; border-radius: 5px">
+
+        <div class="col-12 mb-4 mt-4">
+            <h4 class="mb-2" style="font-family: Comic Sans MS", cursive, sans-serif;">About Us</h4>
+                <p class="mb-2">{{ object.content }}</p>
+        </div>
+
+        <div class="col-12 mb-4 mt-4">
+            <h4 class="mb-2" style = "border-top:1px solid #bdc3c7; padding-top: 1em; font-family: Comic Sans MS", cursive, sans-serif;">Email</h4>
+                <p class="mb-2">    {{ object.email }}</p>
+        </div>
+
+        <div class="col-12 mb-4 mt-4">
+            <h4 class="mb-2" style = "border-top:1px solid #bdc3c7;padding-top: 1em; font-family: Comic Sans MS", cursive, sans-serif;">Phone Number</h4>
+                <p class="mb-2">{{ object.phone }}</p>
+        </div>
+
+        <div class="col-12 mb-4 mt-4">
+            <h4 class="mb-2" style = "border-top:1px solid #bdc3c7;padding-top: 1em; font-family: Comic Sans MS", cursive, sans-serif;">Address</h4>
+                <p class="mb-2">{{ object.address }}</p>
+        </div>
+
+        <div class="col-12 mb-4 mt-4">
+            <h4 class="mb-2" style = "border-top:1px solid #bdc3c7;padding-top: 1em; font-family: Comic Sans MS", cursive, sans-serif;">Reviews</h4>
+                <p class="mb-2"></p>
+        </div>
+
+        {% if object.author == user %}
+          <div>
+            <a class="btn btn-secondary" href="{% url 'cafe-update' object.id %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'cafe-delete' object.id %}">Delete</a>
+          </div>
+        {% else %}
+        <div>
+            <a class="review-button" href="#">Write a review</a>
+        </div>
+        {% endif %}
+
+
+</div>
+{% endblock %}
