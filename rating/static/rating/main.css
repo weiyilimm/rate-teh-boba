@@ -145,6 +145,8 @@ footer .footer-copyright { border-top:1px solid #626262; padding:2em 0; }
 footer a { color:#fff; }
 footer a:hover { color:#ddd; text-decoration:none; }
 footer .footer-social-links .fa { font-size:19px; }
+footer .email-signup.form-inline .form-control { border-top-right-radius:0; border-bottom-right-radius:0; height:40px; width:calc(100% - 110px); }
+footer .email-signup .btn { border-top-left-radius:0; border-bottom-left-radius:0; height:40px; width:110px; }
 
 .search-box{
   position:absolute;
@@ -198,8 +200,3 @@ footer .footer-social-links .fa { font-size:19px; }
 }
 
 .signpost { font-family:BrandonGrotesque-Medium,Helvetica,Arial,sans-serif; text-transform:uppercase; font-size:0.813rem; color:#7e8890; }
-
-
-
-
-
