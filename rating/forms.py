@@ -1,5 +1,6 @@
-'''from django import forms
-from registration.forms import RegistrationForm
+from django import forms
+from .models import *
+'''from registration.forms import RegistrationForm
 from rating.models import User, UserProfile, Business, Review, Boba, Flavour
 
 class RegisterForm(RegistrationForm):
@@ -30,3 +31,8 @@ class BusinessForm(forms.ModelForm):
 	class Meta:
 		#'''
 
+class CafeRegisterForm(forms.ModelForm):
+
+    class Meta:
+        model = Hotel
+        fields = ['name', 'email','phone','address','content','image']

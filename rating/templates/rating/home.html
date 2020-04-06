@@ -14,26 +14,13 @@
 <div class="container my-5">
     <h2>Lastest Listings</h2>
     <div class="row">
+        {% for c in cafe %}
         <div style="float: left;width: 25%;padding: 5px;">
-            <a href="#"><img src="{% static 'images/machi.jpg' %}" alt="Machi Machi" style="width:100%; height:180px; border-radius: 5px"></a>
-            <div class="signpost">City of London</div>
-            <h4><a href="#">Machi Machi</a></h4>
+            <a href="{% url 'cafe-detail' c.id %}"><img src="{{ c.image.url }}" alt="Cafe" style="width:100%; height:180px; border-radius: 5px"></a>
+            <div class="signpost">{{ c.city }}</div>
+            <h4><a href="#">{{ c.title }}</a></h4>
         </div>
-        <div style="float: left;width: 25%;padding: 5px;">
-            <a href="#"><img src="{% static 'images/Koi.jpg' %}" alt="Koi" style="width:100%; height:180px; border-radius: 5px"></a>
-            <div class="signpost">Singapore</div>
-            <h4><a href="#">Koi</a></h4>
-        </div>
-        <div style="float: left;width: 25%;padding: 5px;">
-            <a href="#"><img src="{% static 'images/yifang.jpg' %}" alt="Yi Fang" style="width:100%; height:180px; border-radius: 5px"></a>
-            <div class="signpost">Glasgow</div>
-            <h4><a href="#">Yi Fang</a></h4>
-        </div>
-        <div style="float: left;width: 25%;padding: 5px;">
-            <a href="#"><img src="{% static 'images/xingfutang.jpg' %}" alt="Xing Fu Tang" style="width:100%; height:180px; border-radius: 5px"></a>
-            <div class="signpost">City of London</div>
-            <h4><a href="#">Xing Fu Tang</a></h4>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
