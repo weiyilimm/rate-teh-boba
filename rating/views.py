@@ -5,3 +5,6 @@ def home(request):
 
 def about(request):
     return render(request,'rating/about.html',{'title':'about'})
+
+def contact(request):
+    return render(request,'rating/contact.html',{'title':'Contact-Us'})
