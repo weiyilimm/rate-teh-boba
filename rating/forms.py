@@ -31,8 +31,4 @@ class BusinessForm(forms.ModelForm):
 	class Meta:
 		#'''
 
-class CafeRegisterForm(forms.ModelForm):
 
-    class Meta:
-        model = Hotel
-        fields = ['name', 'email','phone','address','content','image']

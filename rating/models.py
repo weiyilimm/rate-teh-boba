@@ -19,3 +19,12 @@ class Cafe(models.Model):
 
     def get_absolute_url(self):
         return reverse('cafe-detail', kwargs={'pk': self.pk})
+
+class Feedback(models.Model):
+    cafe = models.ForeignKey(Cafe, on_delete=models.CASCADE, blank=True, null=True,related_name='feedbacks')
+    comment = models.TextField()
+    date_posted = models.DateTimeField(default=timezone.now)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.cafe.title

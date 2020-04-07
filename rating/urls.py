@@ -5,7 +5,8 @@ from .views import (
     CafeDetailView,
     CafeCreateView,
     CafeUpdateView,
-    CafeDeleteView
+    CafeDeleteView,
+    FeedbackCreateView
 )
 
 
@@ -15,6 +16,9 @@ urlpatterns = [
     path('cafe/new/', CafeCreateView.as_view(), name='cafe-create'),
     path('cafe/<int:pk>/update/', CafeUpdateView.as_view(), name='cafe-update'),
     path('cafe/<int:pk>/delete/', CafeDeleteView.as_view(), name='cafe-delete'),
-    path('about/', views.about,name = 'rate-about')
-
+    path('cafe/<int:pk>/feedback/', FeedbackCreateView.as_view(), name='feedback-create'),
+    path('about/', views.about,name = 'rate-about'),
+    path('contact/', views.contact,name = 'rate-contact'),
+    path('terms/', views.terms,name = 'rate-terms'),
+    path('privacy/', views.privacy,name = 'rate-privacy')
 ]
