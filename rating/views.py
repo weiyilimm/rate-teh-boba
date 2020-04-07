@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Cafe
+from .models import Cafe, Feedback
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
     ListView,
@@ -60,5 +60,34 @@ class CafeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
+def feedback(request):
+    context = {'feedbacks': Feedback.objects.all()}
+    return render(request,'rating/cafe_detail.html',context)
+
+class FeedbackListView(ListView):
+    model = Feedback
+    template_name = 'cafe_detail.html'
+    context_object_name = 'feedbacks'
+    ordering = ['-date_posted']
+
+class FeedbackCreateView(LoginRequiredMixin, CreateView):
+    model = Feedback
+    fields = ['comment']
+    success_url = '/'
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+
 def about(request):
     return render(request,'rating/about.html',{'title':'about'})
+
+def privacy(request):
+    return render(request,'rating/privacy.html',{'title':'privacy'})
+
+def terms(request):
+    return render(request,'rating/terms.html',{'title':'terms'})
+
+def contact(request):
+    return render(request,'rating/contact.html',{'title':'contact'})

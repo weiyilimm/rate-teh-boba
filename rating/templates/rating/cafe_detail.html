@@ -12,12 +12,12 @@
 
         <div class="col-12 mb-4 mt-4">
             <h4 class="mb-2" style = "border-top:1px solid #bdc3c7; padding-top: 1em; font-family: Comic Sans MS", cursive, sans-serif;">Email</h4>
-                <p class="mb-2">    {{ object.email }}</p>
+                <address><a href="mailto:{{ object.email }}" class="mb-2">{{ object.email }}</a></address>
         </div>
 
         <div class="col-12 mb-4 mt-4">
             <h4 class="mb-2" style = "border-top:1px solid #bdc3c7;padding-top: 1em; font-family: Comic Sans MS", cursive, sans-serif;">Phone Number</h4>
-                <p class="mb-2">{{ object.phone }}</p>
+                <address><a href="tel:{{ object.phone }}" class="mb-2">{{ object.phone }}</a></address>
         </div>
 
         <div class="col-12 mb-4 mt-4">
@@ -37,10 +37,16 @@
           </div>
         {% else %}
         <div>
-            <a class="review-button" href="#">Write a review</a>
+            <a class="review-button" href="{% url 'feedback-create' object.id %}">Write a review</a>
         </div>
         {% endif %}
-
-
+        {% for feedback in feedbacks %}
+            {% if object == feedback.cafe %}
+        <div class="col-12 mb-4 mt-4">
+            <h4 class="mb-2" style="font-family: Comic Sans MS", cursive, sans-serif;">Feedback</h4>
+            <p class="mb-2">{{ feedback.comment }}</p>
+        </div>
+            {% endif %}
+        {% endfor %}
 </div>
 {% endblock %}
