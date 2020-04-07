@@ -1,4 +1,0 @@
-Create a local file called bing.key in the rating project directory and put this key
-in it to run search functionality
-
-407654a361d44b6ababc1c2f871c39b1
