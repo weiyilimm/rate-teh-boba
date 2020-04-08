@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Cafe, Feedback
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
@@ -20,10 +20,22 @@ class CafeListView(ListView):
     template_name = 'rating/home.html'
     context_object_name = 'cafe'
     ordering = ['-date_posted']
+    paginate_by = 4
 
+
+class SearchCafeListView(ListView):
+    model = Cafe
+    template_name = 'rating/search_cafe.html'
+    context_object_name = 'cafe'
+    paginate_by = 4
+
+    def get_queryset(self):
+        cities = get_object_or_404(Cafe, city=self.kwargs.get('city'))
+        return Cafe.objects.filter(city = cities).order_by('-date_posted')
 
 class CafeDetailView(DetailView):
     model = Cafe
+
 
 
 class CafeCreateView(LoginRequiredMixin, CreateView):
@@ -91,3 +103,6 @@ def terms(request):
 
 def contact(request):
     return render(request,'rating/contact.html',{'title':'contact'})
+
+def faq(request):
+    return render(request, 'rating/faq.html', {'title':'faq'})
