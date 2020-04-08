@@ -65,3 +65,54 @@ class ViewTests(TestCase):
                         f"{FAILURE_HEADER} Home view missing {FAILURE_FOOTER}")
         self.assertTrue(is_callable,
                         f"{FAILURE_HEADER}Check you have defined your home() view correctly. {FAILURE_FOOTER}")
+
+def create_user_object():
+
+    user = User.objects.get_or_create(username='testuser',
+                                      first_name='Test',
+                                      last_name='User',
+                                      email='test@test.com')[0]
+    user.set_password('testabc123')
+    user.save()
+
+    return user
+
+def create_super_user_object():
+    """
+    Helper function to create a super user (admin) account.
+    """
+    return User.objects.create_superuser('admin', 'admin@test.com', 'testpassword')
+
+def get_template(path_to_template):
+    """
+    Helper function to return the string representation of a template file.
+    """
+    f = open(path_to_template, 'r')
+    template_str = ""
+
+    for line in f:
+        template_str = f"{template_str}{line}"
+
+    f.close()
+    return template_str
+
+
+class AuthSetupTests(TestCase):
+
+    def test_installed_apps(self):
+
+        self.assertTrue('django.contrib.auth' in settings.INSTALLED_APPS)
+
+    def test_model_admin_interface_inclusion(self):
+        """
+        Attempts to access the UserProfile admin interface instance.
+        If we don't get a HTTP 200, then we assume that the model has not been registered. Fair assumption!
+        """
+        super_user = create_super_user_object()
+        self.client.login(username='admin', password='testpassword')
+
+        # The following URL should be available if the UserProfile model has been registered to the admin interface.
+        response = self.client.get('/admin/rating/cafe/')
+        self.assertEqual(response.status_code, 200,
+                         f"{FAILURE_HEADER}didn't get a HTTP 200 status code.{FAILURE_FOOTER}")
+
