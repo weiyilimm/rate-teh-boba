@@ -23,5 +23,4 @@ urlpatterns = [
     path('contact/', views.contact,name = 'rate-contact'),
     path('terms/', views.terms,name = 'rate-terms'),
     path('privacy/', views.privacy,name = 'rate-privacy'),
-    path('faq/', views.faq, name = 'rate-faq')
 ]
