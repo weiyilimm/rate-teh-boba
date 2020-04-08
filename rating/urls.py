@@ -6,12 +6,14 @@ from .views import (
     CafeCreateView,
     CafeUpdateView,
     CafeDeleteView,
-    FeedbackCreateView
+    FeedbackCreateView,
+    SearchCafeListView
 )
 
 
 urlpatterns = [
     path('', CafeListView.as_view(), name='rate-home'),
+    path('cafe/<str:city>', SearchCafeListView.as_view(), name='search-city'),
     path('cafe/<int:pk>/', CafeDetailView.as_view(), name='cafe-detail'),
     path('cafe/new/', CafeCreateView.as_view(), name='cafe-create'),
     path('cafe/<int:pk>/update/', CafeUpdateView.as_view(), name='cafe-update'),
@@ -20,5 +22,6 @@ urlpatterns = [
     path('about/', views.about,name = 'rate-about'),
     path('contact/', views.contact,name = 'rate-contact'),
     path('terms/', views.terms,name = 'rate-terms'),
-    path('privacy/', views.privacy,name = 'rate-privacy')
+    path('privacy/', views.privacy,name = 'rate-privacy'),
+    path('faq/', views.faq, name = 'rate-faq')
 ]
