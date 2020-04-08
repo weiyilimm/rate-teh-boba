@@ -2,27 +2,27 @@
 {% load staticfiles %}
 {% block content%}
 <div class="container my-5">
-    <h2 style="font-family: Comic Sans MS", cursive, sans-serif;">{{ object.title }}</h2>
-    <img src="{{ object.image.url }}" alt="Cafe" style="width:100%; height:500px; border-radius: 5px">
+    <h2 style="font-family: Comic Sans MS", cursive, sans-serif;">{{ cafe.title }}</h2>
+    <img src="{{ cafe.image.url }}" alt="Cafe" style="width:100%; height:500px; border-radius: 5px">
 
         <div class="col-12 mb-4 mt-4">
             <h4 class="mb-2" style="font-family: Comic Sans MS", cursive, sans-serif;">About Us</h4>
-                <p class="mb-2">{{ object.content }}</p>
+                <p class="mb-2">{{ cafe.content }}</p>
         </div>
 
         <div class="col-12 mb-4 mt-4">
             <h4 class="mb-2" style = "border-top:1px solid #bdc3c7; padding-top: 1em; font-family: Comic Sans MS", cursive, sans-serif;">Email</h4>
-                <address><a href="mailto:{{ object.email }}" class="mb-2">{{ object.email }}</a></address>
+                <address><a href="mailto:{{ cafe.email }}" class="mb-2">{{ cafe.email }}</a></address>
         </div>
 
         <div class="col-12 mb-4 mt-4">
             <h4 class="mb-2" style = "border-top:1px solid #bdc3c7;padding-top: 1em; font-family: Comic Sans MS", cursive, sans-serif;">Phone Number</h4>
-                <address><a href="tel:{{ object.phone }}" class="mb-2">{{ object.phone }}</a></address>
+                <address><a href="tel:{{ cafe.phone }}" class="mb-2">{{ cafe.phone }}</a></address>
         </div>
 
         <div class="col-12 mb-4 mt-4">
             <h4 class="mb-2" style = "border-top:1px solid #bdc3c7;padding-top: 1em; font-family: Comic Sans MS", cursive, sans-serif;">Address</h4>
-                <p class="mb-2">{{ object.address }}</p>
+                <p class="mb-2">{{ cafe.address }}</p>
         </div>
 
         <div class="col-12 mb-4 mt-4">
@@ -30,23 +30,26 @@
                 <p class="mb-2"></p>
         </div>
 
-        {% if object.author == user %}
+        {% if cafe.author == user %}
           <div>
-            <a class="btn btn-secondary" href="{% url 'cafe-update' object.id %}">Update</a>
-            <a class="btn btn-danger" href="{% url 'cafe-delete' object.id %}">Delete</a>
+            <a class="btn btn-secondary" href="{% url 'cafe-update' cafe.slug %}">Update</a>
+            <a class="btn btn-danger" href="{% url 'cafe-delete' cafe.slug %}">Delete</a>
           </div>
         {% else %}
         <div>
-            <a class="review-button" href="{% url 'feedback-create' object.id %}">Write a review</a>
+            <a class="review-button" href="{% url 'feedback-create' cafe.slug %}">Write a review</a>
         </div>
         {% endif %}
-        {% for feedback in feedbacks %}
-            {% if object == feedback.cafe %}
-        <div class="col-12 mb-4 mt-4">
-            <h4 class="mb-2" style="font-family: Comic Sans MS", cursive, sans-serif;">Feedback</h4>
-            <p class="mb-2">{{ feedback.comment }}</p>
-        </div>
-            {% endif %}
-        {% endfor %}
+        {% if feedbacks %}
+
+            {% for feedback in feedbacks %}
+                {% if cafe.slug == feedback.cafe.slug %}
+            <div class="col-12 mb-4 mt-4">
+                <h4 class="mb-2" style = "border-top:1px solid #bdc3c7;padding-top: 1em; font-family: Comic Sans MS", cursive, sans-serif;">Feedback by {{ feedback.author }}</h4>
+                <p class="mb-2">{{ feedback.comment }}</p>
+            </div>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
 </div>
 {% endblock %}

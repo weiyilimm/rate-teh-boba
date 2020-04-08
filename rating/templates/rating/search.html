@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% extends "rating/base.html" %}
+{% load staticfiles %}
+{% block content%}
+<div class="container">
+    <h4 class="display-4">Search Results</h4>
+    {% if submit_button == "Search" and requet.GET.search != "" %}
+        {% if cafes %}
+            <h5 class="display-5">Showing search results for: {{ request.GET.search }}</h5>
+            <hr/>
+
+            {% for cafe in cafes %}
+            <div class="row">
+                <div class="col-md-4 col-xs-12" style = "border-bottom:1px solid #bdc3c7;padding: 1em;">
+                    <a href="{% url 'cafe-detail' cafe.slug %}">
+                        <img src="{{ cafe.image.url }}"
+                             alt="Cafe"
+                             style="width:100%; height:200px; border-radius: 5px">
+                    </a>
+                </div>
+                <div class="col-md-4 col-xs-12" style = "border-bottom:1px solid #bdc3c7;padding: 1em;">
+                    <a href="{% url 'cafe-detail' cafe.slug %}">
+                        <h5>{{ cafe.title }}</h5>
+                    </a>
+                    <p>
+                        city: {{ cafe.city }}<br/>
+                        address: {{ cafe.address }}
+                    </p>
+
+                </div>
+                <hr/>
+            </div>
+            {% endfor %}
+
+        {% else %}
+            <h5 class="display-5">No search results for: {{ request.GET.search }}</h5>
+        {% endif %}
+    {% endif %}
+</div>
+<hr/>
+<br/>
+
+{% endblock %}
