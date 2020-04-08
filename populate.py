@@ -7,7 +7,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'ratetehboba.settings')
 import django
 
 django.setup()
-from ratings.models import Cafe, Feedback
+from rating.models import Cafe, Feedback
 from users.models import Profile
 from django.utils.dateparse import parse_date
 
@@ -15,56 +15,76 @@ from django.contrib.auth.models import User
 
 
 def populate():
-    # Creating the data
-    # template
-    # {"title": ,
-    #  "address": ,
-    #  "city": ,
-    #  "email": ,
-    #  "content": ,
-    #  "date_posted": ,
-    #  "author": ,
-    #  "image": ,},
 
     cafes = [{"title": "The alley",
               "address": "49-GF, Jalan Austin Heights 8/1, Taman Austin Heights, 81100 Johor Bahru, Johor",
               "city": "Johor Bahru",
-              "phone": "",
+              "phone": "+6073648276",
               "email": "thealley@hotmail.com",
-              "content": "2",
+              "content": "1",
               "date_posted": "2020-04-07",
               "author": "2474554l",
               "image": "images/bubbletea.jpg", },
              {"title": "Xing Fu Tang",
               "address": "29 Frith St, Soho, London W1D 5LG, United Kingdom",
               "city": "London",
-              "phone": "",
-              "email": "",
-              "content": "",
-              "date_posted": "",
-              "author": "",
-              "image": "", },
-             {"title": "",
-              "address": "",
-              "city": "",
-              "phone": "",
-              "email": "",
-              "content": "",
-              "date_posted": "",
-              "author": "",
-              "image": "", },
+              "phone": "+447928265421",
+              "email": "xingfutang@hotmail.com",
+              "content": "2",
+              "date_posted": "2020-04-07",
+              "author": "2474554l",
+              "image": "images/xingfutang.jpg", },
+             {"title": "Yi Fang",
+              "address": "104 Shaftesbury Ave, West End, London W1D 5EQ, United Kingdom",
+              "city": "London",
+              "phone": "+443330147136",
+              "email": "yifang@hotmail.com",
+              "content": "3",
+              "date_posted": "2020-04-07",
+              "author": "weikang",
+              "image": "images/yifang.jpg", },
+             {"title": "Machi Machi",
+              "address": "59 Shaftesbury Ave, Soho, London W1D 6LF, United Kingdom",
+              "city": "London",
+              "phone": "+442089610362",
+              "email": "machimachi@hotmail.com",
+              "content": "4",
+              "date_posted": "2020-04-07",
+              "author": "weikang",
+              "image": "images/machimachi.jpg", },
+             {"title": "Koi",
+              "address": "133 New Bridge Rd, #01-39 ChinaTown Point, Singapore 059413",
+              "city": "Singapore",
+              "phone": "+6562212140",
+              "email": "koi@hotmail.com",
+              "content": "5",
+              "date_posted": "2020-04-07",
+              "author": "weikang",
+              "image": "images/koi.jpg", },
              ]
-    # creating users. Template:
-    # {"username":"",
-    #  "image":"profile_pics/wex.jpeg",
-    #  "first_name":"first",
-    #  "last_name":"last",
-    #  "bio":"lorem ipsum dolor sit amet" },
-    users = [{"username":"",
+
+    users = [{"username":"weikang",
               "image":"profile_pics/wex.jpeg",
-              "first_name":"first",
-              "last_name":"last",
-              "bio":"lorem ipsum dolor sit amet" },]
+              "first_name":"weikang",
+              "last_name":"aw",
+              "bio":"I want to try bubble tea" },
+              {"username":"weiyilim",
+              "image":"profile_pics/default.jpg",
+              "first_name":"weiyi",
+              "last_name":"lim",
+              "bio":"I love bubble tea" },
+              {"username":"Jonathan",
+              "image":"profile_pics/default.jpg",
+              "first_name":"weikang",
+              "last_name":"aw",
+              "bio":"I own bubble tea shop" },
+              {"username":"2474554l",
+              "image":"profile_pics/default.jpg",
+              "first_name":"wei",
+              "last_name":"ah",
+              "bio":"I own bubble tea shops" },
+              ]
+
     # creating feedbacks
     feedback = [{"comment":"somerandomcomment"}]
 
