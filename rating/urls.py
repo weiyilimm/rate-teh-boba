@@ -1,27 +1,27 @@
 from django.urls import path
 from . import views
 from .views import (
-    CafeListView,
-    CafeDetailView,
-    CafeCreateView,
-    CafeUpdateView,
-    CafeDeleteView,
-    FeedbackCreateView,
-    SearchCafeListView
+    ListCafe,
+    DetailCafe,
+    RegisterCafe,
+    UpdateCafe,
+    DeleteCafe,
+    WriteFeedback
 )
 
 
 urlpatterns = [
-    path('', CafeListView.as_view(), name='rate-home'),
-    path('cafe/<str:city>', SearchCafeListView.as_view(), name='search-city'),
-    path('cafe/<int:pk>/', CafeDetailView.as_view(), name='cafe-detail'),
-    path('cafe/new/', CafeCreateView.as_view(), name='cafe-create'),
-    path('cafe/<int:pk>/update/', CafeUpdateView.as_view(), name='cafe-update'),
-    path('cafe/<int:pk>/delete/', CafeDeleteView.as_view(), name='cafe-delete'),
-    path('cafe/<int:pk>/feedback/', FeedbackCreateView.as_view(), name='feedback-create'),
-    path('about/', views.about,name = 'rate-about'),
-    path('contact/', views.contact,name = 'rate-contact'),
-    path('terms/', views.terms,name = 'rate-terms'),
-    path('privacy/', views.privacy,name = 'rate-privacy'),
-     path('faq/', views.faq, name = 'rate-faq')
+    path('', views.ListCafe, name='rate-home'),
+    path('cafe/<slug:cafe_slug>/', views.DetailCafe, name="cafe-detail"),
+    path('new/', views.RegisterCafe, name='cafe-create'),
+    path('cafe/<slug:cafe_slug>/update/', views.UpdateCafe, name='cafe-update'),
+    path('cafe/<slug:cafe_slug>/delete/', views.DeleteCafe, name='cafe-delete'),
+    path('cafe/<slug:cafe_slug>/feedback/',
+         views.WriteFeedback, name='feedback-create'),
+    path('about/', views.about, name='rate-about'),
+    path('contact/', views.contact, name='rate-contact'),
+    path('terms/', views.terms, name='rate-terms'),
+    path('privacy/', views.privacy, name='rate-privacy'),
+    path('faq/', views.faq, name='rate-faq'),
+    path('search/', views.search, name='search'),
 ]

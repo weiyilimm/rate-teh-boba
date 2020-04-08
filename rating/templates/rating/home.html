@@ -6,56 +6,35 @@
 
         <h1>The best teh boba in town</h1>
         <div class='search-box'>
-            <input class = 'search-txt' name = '' placeholder="Which teh boba do you want to drink?">
-            <a href="#" class = 'search-button'>SEARCH</a>
+            <form action = "{% url 'search' %}"
+                  method = "GET"
+                  value = "{{ request.GET.search }}">
+                <input class = 'search-txt'
+                       name = 'search'
+                       type = 'text'
+                       value = '{{ request.GET.search }}'
+                       placeholder="Which teh boba do you want to drink?">
+                <button
+                   class = 'search-button'
+                   name="submit"
+                   type="submit"
+                   value="Search">SEARCH</button>
+            </form>
         </div>
     </div>
 </section>
 <div class="container my-5">
     <h2 style="font-family: Comic Sans MS", cursive, sans-serif;">Latest Listings</h2>
     <div class="row">
-
         {% for c in cafe %}
-        <div style="float: left;width: 25%;padding: 5px;">
-            <a href="{% url 'cafe-detail' c.id %}"><img src="{{ c.image.url }}" alt="Cafe" style="width:100%; height:25vh; border-radius: 5px"></a>
+        <div style="float: left;width: 25%;padding: 5px;" class="col-12 col-sm-6 col-md-4 col-lg-3">
+            <a href="{% url 'cafe-detail' c.slug %}"><img src="{{ c.image.url }}" alt="Cafe"
+                                                       style="width:100%; height:200px; border-radius: 5px"></a>
             <div class="signpost">{{ c.city }}</div>
-            <h4><a href="{% url 'cafe-detail' c.id %}">{{ c.title }}</a></h4>
+            <h4><a href="{% url 'cafe-detail' c.slug %}">{{ c.title }}</a></h4>
         </div>
         {% endfor %}
     </div>
-<div style="text-align: center;margin-top: 1em;">
-<ul class="pagination">
-
-{% if is_paginated %}
-
-{% if page_obj.has_previous %}
-<li class="page-item">
-<a class="page-link" href="?page={{ page_obj.previous_page_number }}" aria-label="Previous">
-        <span aria-hidden="true">&laquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-</li>
-{% endif %}
-
-{% for num in page_obj.paginator.page_range %}
-{% if page_obj.number == num %}
-<li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
-{% endif %}
-{% endfor %}
-
-{% if page_obj.has_next %}
-<li class="page-item">
-<a class="page-link" href="?page={{ page_obj.paginator.num_pages }}" aria-label="Last">
-        <span aria-hidden="true">&raquo;</span>
-        <span class="sr-only">Previous</span>
-      </a>
-</li>
-{% endif %}
-{% endif %}
-
-    </li>
-</ul>
 </div>
-
 {% endblock %}
 
