@@ -1,3 +1,4 @@
+
 from django.test import TestCase
 
 # Create your tests here.
@@ -115,4 +116,7 @@ class AuthSetupTests(TestCase):
         response = self.client.get('/admin/rating/cafe/')
         self.assertEqual(response.status_code, 200,
                          f"{FAILURE_HEADER}didn't get a HTTP 200 status code.{FAILURE_FOOTER}")
+<<<<<<< HEAD
+=======
 
+>>>>>>> d6167d09f4cc4205221d397f19daeb6443e68582

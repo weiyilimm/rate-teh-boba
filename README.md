@@ -27,7 +27,7 @@ The repository of our webpage could be found here: [https://github.com/weiyilimm
 1. Create a virtual environment:
 ```bash
 conda create -n teh python=3.7.2
-conda activate tradebooks
+conda activate teh
 ```
 
 2. Clone our repository:
@@ -44,14 +44,14 @@ pip install -r requirements.txt
 4. Migrate database models:
 ```bash
 cd ratetehboba
-py manage.py makemigrations tradebooks
+py manage.py makemigrations
 py manage.py migrate
 ```
 
 5. Run the population script to populate the database for testing.
 Note: python is used as "py " will not work and causes an error.
 ```bash
-python population_script.py
+python populate.py
 ```
 
 6. Run the server
@@ -71,14 +71,13 @@ Note: Omit the file extension ".py" when unit testing.
 
 ## Usage
 
-Five accounts are added by the population script, namely:
-- desuderata
-- okiTACObigtaco
-- susamusa29
-- abrar928
-- NoobMaster69.
+Four accounts are added by the population script, namely:
+- 2474554l
+- weikang
+- weiyilim
+- jonathan
 
-with "password" being the password for all five.
+with "password" being the password for all four.
 ### Register as a user
 To register as a user, simply press the register button on the home page to create an account. After creating an account, you could now log in to register cafe or write a review.
 
