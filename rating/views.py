@@ -91,3 +91,6 @@ def terms(request):
 
 def contact(request):
     return render(request,'rating/contact.html',{'title':'contact'})
+
+def faq(request):
+    return render(request, 'rating/faq.html', {'title':'faq'})
