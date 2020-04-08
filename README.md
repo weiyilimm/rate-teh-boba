@@ -3,7 +3,7 @@
 
 Rate Teh Boba is a review website which was founded in 2020 by Glasgow Students. The website has food and culinary guides and pictures, along with user-generated reviews of bubble tea cafe.
 
-The site is currently up at:
+Website: http://2474554l.pythonanywhere.com/
 
 ## Prerequisites
 
@@ -14,10 +14,6 @@ The website is built on:
 [Django 2.2.3 (LTS)](https://docs.djangoproject.com/en/3.0/releases/2.2.3/)
 
 [Bootstrap 4](https://getbootstrap.com/)
-
-[JQuery](https://jquery.com/)
-
-[AJAX](https://api.jquery.com/category/ajax/)
 
 
 ## Installation
@@ -49,7 +45,6 @@ py manage.py migrate
 ```
 
 5. Run the population script to populate the database for testing.
-Note: python is used as "py " will not work and causes an error.
 ```bash
 python populate.py
 ```
@@ -65,9 +60,6 @@ To run a unit test
 ```bash
 python manage.py test <test-file-name>
 ```
-
-
-Note: Omit the file extension ".py" when unit testing.
 
 ## Usage
 
@@ -89,8 +81,6 @@ To register a cafe, simply press the register cafe button on the home page to cr
 
 If your cafe have been closed down, you can press your cafe and navigate to cafe details page and press the delete button below, and the website will be disappeared.
 
-**Important**: If you would like to delete your book from our catalog, check the option to do so. Otherwise, you will have to contact our staff through the contact us page to request for a deletion.
-
 ### Update a Cafe
 
 If your cafe name, phone number or email have been changed, you can press your cafe and navigate to cafe details and press the update button below, and you can update the details.
@@ -107,13 +97,14 @@ Code *by* Lab Group 11 Team E
   * [Weiyi Lim](https://github.com/weiyilimm)
   * [Karen Tada](https://github.com/trtk298/)
 
-## Acknowledgements
+## External Sources
 [Make a README](https://www.makeareadme.com/)
 
 [Font Awesome](https://fontawesome.com/)
 
 [Tango With Django](https://github.com/maxwelld90/tango_with_django_2_code)
 
-[SMTPlib](https://docs.python.org/3/library/smtplib.html)
-
 [StackOverflow](https://stackoverflow.com/)
+
+[Crispy_Form](https://django-crispy-forms.readthedocs.io/en/latest/)
+
